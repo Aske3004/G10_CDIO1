@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.util.Random;
+//This is the main class of the game, which creates and handles the different objects
+//This is also where every check of the roll output is handled
 
 class Game {
     
@@ -19,11 +21,15 @@ class Game {
         Die player2Die1 = new Die("player2Die1");
         Die player2Die2 = new Die("player2Die2");
 
+        //Make the game continue until a player has met the winning criterias and therefore wins the game.
         while (!player1Won && !player2Won){
             System.out.println("The scoreboard is currently:");
             System.out.println("Player1: " + player1Point);
             System.out.println("Player2: " + player2Point);
             System.out.println("Press Enter to continue with " + playerTurn + "'s turn");
+
+            //Here we make the program run the next time the Enter butten has been pressed, and then depending on
+            //whether its player1's or player2's turn do 2 different things.
             try{scanner.nextLine();}
             catch(Exception e){}  
             
@@ -78,6 +84,9 @@ class Game {
                     }
                 }
             }
+
+            //When the winning criterias has been met we break out of the loop and run these next lines to display the winner
+            //of the game. We also simulate a test of 1000 dice throws, to see if the dice are working correctly.
             if(player1Won){
             System.out.println("Player1 has reached " + player1Point + " points and rolled a double, and has therefore won the game!");
         } 
