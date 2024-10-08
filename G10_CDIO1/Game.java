@@ -40,6 +40,31 @@ class Game {
                         playerTurn = "Player2";
                     } 
                 }
+                else if(playerTurn.equals("Player2")){
+                    player2Die1.rollDie();
+                    player2Die2.rollDie();
+                    player2Point += (player2Die1.dieValue + player2Die2.dieValue);
+                    System.out.println("Player2 just rolled a " + player2Die1.dieValue + " and a " + player2Die2.dieValue);
+                    if((player2Die1.dieValue == player2Die2.dieValue) && playerTurn.equals("Player2")){
+                        if(player2Point>=40){
+                            player2Won = true;
+                            break;
+                        }
+                        playerTurn = "Player2";
+                        System.out.println("Player2 has rolled the same value on both dice and therefore gets another turn");
+                        if(player2Die1.dieValue == 1 && player2Die2.dieValue == 1){
+                            player2Point = 0;
+                            System.out.println("Player2 has rolled two 1's and therefore their points get reset");
+                        }
+                        if(player2Die1.dieValue == 6 && player2Die2.dieValue == 6 && player2Die1.prevDieValue == 6 && player2Die2.prevDieValue == 6){
+                            System.out.println("Player2 has gotten double 6 two rounds in a row and therefore wins the game!");
+                            break;
+                        }
+                    }
+                    else{
+                        playerTurn = "Player1";
+                    }
+                }
             }   
         }
     }
