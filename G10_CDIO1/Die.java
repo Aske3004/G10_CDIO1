@@ -1,5 +1,6 @@
 //This is the class we use to create our dice, which store the current value and the previous value of the die.
 //We use the random funktion to get a random value between 1 and 6.
+//Made by Liam S244645
 
 import java.util.Random;
 
