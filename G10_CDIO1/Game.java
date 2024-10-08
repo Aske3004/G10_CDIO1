@@ -27,20 +27,19 @@ class Game {
             try{scanner.nextLine();}
             catch(Exception e){}  
             
-            if(playerTurn.equals("Player1")){
-                player1Die1.rollDie();
-                player1Die2.rollDie();
-                player1Point += (player1Die1.dieValue + player1Die2.dieValue);
-                System.out.println("Player1 just rolled a " + player1Die1.dieValue + " and a " + player1Die2.dieValue);
-                if((player1Die1.dieValue == player1Die2.dieValue)){
-                    playerTurn = "Player1";
-                    System.out.println("Player1 has rolled the same value on both dice and therefore gets another turn");
+                if(playerTurn.equals("Player1")){
+                    player1Die1.rollDie();
+                    player1Die2.rollDie();
+                    player1Point += (player1Die1.dieValue + player1Die2.dieValue);
+                    System.out.println("Player1 just rolled a " + player1Die1.dieValue + " and a " + player1Die2.dieValue);
+                    
+                    if((player1Die1.dieValue == player1Die2.dieValue)){
+                        playerTurn = "Player1";
+                        System.out.println("Player1 has rolled the same value on both dice and therefore gets another turn");
+                    } else{
+                        playerTurn = "Player2";
+                    } 
                 }
-                else{
-                    playerTurn = "Player2";
-                }
-                
-            }
-            }       
+            }   
         }
     }
