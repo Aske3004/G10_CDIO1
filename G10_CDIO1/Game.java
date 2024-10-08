@@ -34,8 +34,20 @@ class Game {
                     System.out.println("Player1 just rolled a " + player1Die1.dieValue + " and a " + player1Die2.dieValue);
                     
                     if((player1Die1.dieValue == player1Die2.dieValue)){
+                        if(player1Point>=40){
+                            player1Won = true;
+                            break;
+                        }
                         playerTurn = "Player1";
                         System.out.println("Player1 has rolled the same value on both dice and therefore gets another turn");
+                        if(player1Die1.dieValue == 1 && player1Die2.dieValue == 1){
+                            player1Point = 0;
+                            System.out.println("Player1 has rolled two 1's and therefore their points get reset");
+                        }
+                        if(player1Die1.dieValue == 6 && player1Die2.dieValue == 6 && player1Die1.prevDieValue == 6 && player1Die2.prevDieValue == 6){
+                            System.out.println("Player1 has gotten double 6 two rounds in a row and therefore wins the game!");
+                            break;
+                    }
                     } else{
                         playerTurn = "Player2";
                     } 
@@ -65,6 +77,14 @@ class Game {
                         playerTurn = "Player1";
                     }
                 }
-            }   
+            }
+            if(player1Won){
+            System.out.println("Player1 has reached " + player1Point + " points and rolled a double, and has therefore won the game!");
+        } 
+        else if(player2Won){
+            System.out.println("Player2 has reached " + player2Point + " points and rolled a double, and has therefore won the game!");
+        }
+        //To run the test of a thousand throws, run this next line:
+        System.out.println(ThousandThrows.simulateThrows(1000));   
         }
     }
